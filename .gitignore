@@ -1,0 +1,11 @@
+# Ignorar Electron y otros archivos generados automáticamente
+node_modules/
+dist/
+out/
+electron.exe
+*.log
+.DS_Store
+.vscode/
+.idea/
+*.tmp
+*.cache
