@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+@font-face {
+    font-family: 'NombreAppFuente';
+    src: url('assets/fonts/Micfloral.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NombreCuerpoFuente';
+    src: url('assets/fonts/Study\ Case.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --color-fondo: #eadff7;
+    --color-fondo-claro: #f2ebfa;
+    --color-titulo: #9373b9;
+}
+
+body {
+    background-color: var(--color-fondo);
+}
+
+.header {
+    -webkit-app-region: drag;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    padding-bottom: 0;
+    font-family: 'NombreAppFuente';
+    color: var(--color-titulo);
+    font-size: 180%;
+}
+
+
+.close-button {
+    -webkit-app-region: no-drag;
+    background: none;
+    border: none;
+}
+
+.close-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.close-icon:hover {
+    cursor: pointer;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 10px;
+    border: 2px dashed var(--color-titulo);
+    border-radius: 25px;
+    background-color: var(--color-fondo-claro);
+    font-family: "Madimi One";
+    
+}
+
+.question-container {
+    height: 377px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0s linear;
+}
+
+.question-container.show {
+    animation: showSlow 0.5s linear forwards;
+}
+
+.question-container.hidden {
+    animation: hideSlow 0.5s linear forwards;
+}
+
+.score-container {
+    color: var(--color-titulo);
+    font-size: 125%;
+    margin: 10px;
+}
+
+.main-image {
+    width: 230px;
+    height: 230px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.button {
+    transition: transform 0.3s;
+    width: 100px;
+    height: 40px;
+    font-family: inherit;
+    font-size: 100%;
+    border-radius: 25px;
+}
+
+.button:hover {
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
+}
+
+.main-button {
+    background-color: var(--color-titulo);
+    color: var(--color-fondo-claro);
+    border: 1px solid var(--color-titulo);
+}
+
+.second-button {
+    color: var(--color-titulo);
+    border: 1px solid var(--color-titulo);
+}
+
+.result-container {
+    height: 377px;
+    display: flex; 
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    opacity: 0;
+    transition: transform 0s ease;
+}
+
+.result-container.show {
+    animation: showSlow 1s linear forwards;
+}
+
+.result-container.hidden {
+    animation: hiddenSlow 1s linear forwards;
+}
+
+.text-result-container {
+    color: var(--color-titulo);
+    font-size: 170%;
+    margin: 10px;
+}
+
+.text-result-container p {
+}
+
+.text-result-container p.show {
+    animation: zoom 1s linear forwards;
+}
+
+.text-result-container p.hidden {
+    animation: hideSlow 1s linear forwards;
+}
+
+.result-image {
+    width: 230px;
+    height: 230px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.result-image.show {
+    animation: zoomInOut 1s linear forwards;
+}
+
+.result-image.hidden {
+    animation: hideSlow 1s linear forwards;
+}
+
+.hidden-item {
+    display: none;
+}
+
+@keyframes zoomInOut {
+    0% {
+        transform: scale(0.8);
+    }
+    25% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes showSlow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes hideSlow {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

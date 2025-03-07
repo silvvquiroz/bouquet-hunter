@@ -1,0 +1,24 @@
+{
+  "name": "bouquet-hunter",
+  "version": "1.0.0",
+  "description": "Desktop app based on Electron.js. \r You must guess if the pic it's my perfect kind of bouquet or nottt. \r Sort of a quiz game ;)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silvvquiroz/bouquet-hunter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/silvvquiroz/bouquet-hunter/issues"
+  },
+  "homepage": "https://github.com/silvvquiroz/bouquet-hunter#readme",
+  "devDependencies": {
+    "electron": "^35.0.0"
+  }
+}

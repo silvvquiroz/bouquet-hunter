@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouquet Hunter</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="renderer.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <div class="header">
+            <div>
+                Bouquet Hunter
+            </div>
+            <div>
+                <button class="close-button" onclick="refreshGame()">
+                    <img class="close-icon" src="assets/images/refresh.png">
+                </button>
+                <button class="close-button" onclick="closeWindow()">
+                    <img class="close-icon" src="assets/images/cancel2.png">
+                </button>
+            </div>
+            
+            
+        </div>
+        <div class="game-container">
+            <div id="questionContainer" class="question-container">
+                <div class="score-container"><p id="scoreText">Holaa :)</p></div>
+                <img id="mainImage" class="main-image" src="assets/images/logo.png">
+                <div class="button-container">
+                    <button id="startButton" class="button main-button" onclick="startGame()">Comenzar</button>
+                    <button id="yesButton" class="button main-button hidden-item" onclick="evaluateAnswer(true)">Sí!</button>
+                    <button id="noButton" class="button second-button hidden-item" onclick="evaluateAnswer(false)">No</button>
+                </div>
+            </div>
+            <div id="resultContainer" class="result-container hidden-item">
+                <div class="text-result-container">
+                    <p id="resultText">texto</p>
+                </div>
+                <img id="resultImage" class="result-image" src="assets/images/correct.png">
+                
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
