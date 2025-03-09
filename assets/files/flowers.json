@@ -1,0 +1,22 @@
+{
+    "0": {
+        "srcImg": "assets/images/logo.png",
+        "answer": true,
+        "justification": ""
+    },
+    "1": {
+        "srcImg": "assets/images/flor1.jpg",
+        "answer": true,
+        "justification": "Porque es bonita"
+    },
+    "2": {
+        "srcImg": "assets/images/flor2.jpg",
+        "answer": false,
+        "justification": "No me gustan las rosas rojas"
+    },
+    "3": {
+        "srcImg": "assets/images/flor3.jpg",
+        "answer": true,
+        "justification": "Amo el color pastel"
+    }
+}

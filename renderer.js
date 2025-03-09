@@ -1,96 +1,76 @@
 const { ipcRenderer } = require('electron');
+let storySlide = 0;
+const backgrounds = [
+    "url('assets/images/StorylineIntro/1.png')",
+    "url('assets/images/StorylineIntro/2.png')",
+    "url('assets/images/StorylineIntro/3.png')",
+    "url('assets/images/StorylineIntro/4.png')",
+    "url('assets/images/StorylineIntro/5.png')",
+    "url('assets/images/StorylineIntro/6.png')",
+];
 let slide=0;
 let puntaje = 0;
-let imagesSlides = {
-    0: "assets/images/logo.png",
-    1: "assets/images/flor1.jpg",
-    2: "assets/images/flor2.jpg",
-    3: "assets/images/flor3.jpg",
-    4: "assets/images/flor4.jpg",
-    5: "assets/images/flor5.jpg",
-    6: "assets/images/flor6.jpg",
-    7: "assets/images/flor7.jpg",
-    8: "assets/images/flor8.jpg",
-    9: "assets/images/flor9.jpg",
-    10: "assets/images/flor10.jpg"
-};
-let answers = {
-    "assets/images/flor1.jpg": true,
-    "assets/images/flor2.jpg": true,
-};
+let flowers = {};
 
-function refreshGame() {
-    slide = 0;
-    puntaje = 0;
-
-    var resultContainer = document.getElementById('resultContainer');
-    var questionContainer = document.getElementById('questionContainer');
-    let currImg = document.getElementById('mainImage');
-    let scoreText = document.getElementById('scoreText');
-    var yesButton = document.getElementById('yesButton');
-    var noButton = document.getElementById('noButton');
-    var startButton = document.getElementById('startButton');
-
-    if(questionContainer.classList.contains('hidden-item')) {
-        questionContainer.classList.remove('hidden-item');
-        resultContainer.classList.add('hidden-item');
+/*
+Read the JSON file and save the data into flowers global variable
+*/
+fetch('assets/files/flowers.json')
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    if (startButton.classList.contains('hidden-item')) {
-        startButton.classList.remove('hidden-item');
-        yesButton.classList.add('hidden-item');
-        noButton.classList.add('hidden-item');
-    }
-    currImg.setAttribute('src', imagesSlides[slide]);
-    scoreText.innerText = "Holaa :)";
-}
+    return response.json();
+})
+.then( data => {
+    flowers = data;
+    console.log(flowers);
+    //startGame();
+})
+.catch( error => {
+    console.error('Error cargando el JSON: ', error);
+});
 
-
+/********************** WINDOW FUNCTIONS ***********************/
 function closeWindow() {
     ipcRenderer.send('close-window');
 }
 
+function minimizeWindow() {
+    ipcRenderer.send('minimize-window');
+}
+
+
+/************************* STORY FUNCTIONS **************************/
+function nextSlideStory() {
+    let container = document.getElementById('storyContainer');
+    let startButton = document.getElementById('startButton');
+    
+    if (storySlide < backgrounds.length) {
+        storySlide++;
+        container.style.backgroundImage = backgrounds[storySlide];
+        if (storySlide == 5) {
+            startButton.classList.remove('hidden-item');
+            
+        }
+    }
+}
+
+function prevSlideStory() {
+    let container = document.getElementById('storyContainer');
+    if (storySlide > 0) {
+        storySlide--;
+        container.style.backgroundImage = backgrounds[storySlide];
+        
+    }
+}
+
+/************************** LOGIC FUNCTIONS ********************/
 function updateItems() {
     let currImg = document.getElementById('mainImage');
     let scoreText = document.getElementById('scoreText');
     currImg.setAttribute('src', imagesSlides[slide]);
     scoreText.innerText = "Puntaje: " + puntaje + " / 10";
-}
-
-function startGame() {
-    var yesButton = document.getElementById('yesButton');
-    var noButton = document.getElementById('noButton');
-    var startButton = document.getElementById('startButton');
-    var questionContainer = document.getElementById('questionContainer');
-    
-    questionContainer.classList.add('hidden');
-    setTimeout(()=>{
-        questionContainer.classList.remove('hidden');
-        questionContainer.classList.add('show');
-        if (yesButton.classList.contains('hidden-item')) {
-            startButton.classList.add('hidden-item');
-            yesButton.classList.remove('hidden-item');
-            noButton.classList.remove('hidden-item');
-        }
-        slide++;
-        updateItems();
-    }, 500);
-    setTimeout(() => {
-        questionContainer.classList.remove('show');
-    }, 1000);
-}
-
-function nextSlide() {
-    slide++;
-    var resultContainer = document.getElementById('resultContainer');
-    var questionContainer = document.getElementById('questionContainer');
-
-    if(questionContainer.classList.contains('hidden-item')) {
-        questionContainer.classList.remove('hidden-item');
-        resultContainer.classList.add('hidden-item');
-    }
-
-    questionContainer.classList.add('show');
-    updateItems();
 }
 
 function evaluateAnswer(answerUser) {
@@ -108,48 +88,4 @@ function evaluateAnswer(answerUser) {
         // incorrect!
         showResult(false);
     }
-}
-
-function showResult(result) {
-    var resultContainer = document.getElementById('resultContainer');
-    var questionContainer = document.getElementById('questionContainer');
-    var resultText = document.getElementById('resultText');
-    var resultImage = document.getElementById('resultImage');
-    var newInnerText;
-    var newSrc;
-
-    if (result) {
-        newInnerText = "Siiiiiii";
-        newSrc = "assets/images/correct.png";
-    }
-    else {
-        newInnerText = "Nooooo QUÉ TE PASA";
-        newSrc = "assets/images/fail.png";
-    }
-    resultText.innerText = newInnerText;
-    resultImage.setAttribute('src', newSrc);
-
-    if (resultContainer.classList.contains('hidden-item')) {
-        questionContainer.classList.add('hidden');
-        setTimeout(() => {
-            questionContainer.classList.remove('hidden');
-            questionContainer.classList.add('hidden-item');
-            resultContainer.classList.remove('hidden-item');
-            resultContainer.classList.add('show');
-            resultImage.classList.add('show');
-            resultText.classList.add('show');
-        }, 500);
-        setTimeout(() => {
-            resultContainer.classList.remove('show');
-            resultContainer.classList.add('hidden');
-        }, 2500);
-        setTimeout(() => {
-            resultContainer.classList.remove('hidden');
-            questionContainer.classList.add('show');
-        }, 3000);
-        setTimeout(() => {
-            nextSlide();
-        }, 3500);
-    }
-
 }

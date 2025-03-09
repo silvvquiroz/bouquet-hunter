@@ -19,22 +19,22 @@
                 Bouquet Hunter
             </div>
             <div>
-                <button class="close-button" onclick="refreshGame()">
-                    <img class="close-icon" src="assets/images/refresh.png">
+                <button class="close-button" onclick="minimizeWindow()">
+                    <img class="close-icon" src="assets/images/icons/minimize.png">
                 </button>
                 <button class="close-button" onclick="closeWindow()">
                     <img class="close-icon" src="assets/images/cancel2.png">
                 </button>
             </div>
-            
-            
         </div>
         <div class="game-container">
-            <div id="questionContainer" class="question-container">
+            <div id="storyContainer" class="story-intro-container">
+            </div>
+            <div id="questionContainer" class="question-container hidden-item">
                 <div class="score-container"><p id="scoreText">Holaa :)</p></div>
                 <img id="mainImage" class="main-image" src="assets/images/logo.png">
                 <div class="button-container">
-                    <button id="startButton" class="button main-button" onclick="startGame()">Comenzar</button>
+                    <button class="button main-button" onclick="startGame()">Comenzar</button>
                     <button id="yesButton" class="button main-button hidden-item" onclick="evaluateAnswer(true)">Sí!</button>
                     <button id="noButton" class="button second-button hidden-item" onclick="evaluateAnswer(false)">No</button>
                 </div>
@@ -47,7 +47,17 @@
                 
             </div>
         </div>
-        
+        <div class="bottom-button-container">
+            <button class="close-button" onclick="prevSlideStory()">
+                <img class="close-icon" src="assets/images/icons/left-arrow.png">
+            </button>
+            <button class="close-button" onclick="nextSlideStory()">
+                <img class="close-icon" src="assets/images/icons/right-arrow.png">
+            </button>
+            <button id="startButton" class="close-button hidden-item" onclick="nextSlideStory()">
+                Comenzar
+            </button>
+        </div>
     </div>
     
 </body>

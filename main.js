@@ -28,3 +28,9 @@ ipcMain.on('close-window', ()=>{
         mainWindow.close();
     }
 });
+
+ipcMain.on('minimize-window', ()=>{
+    if(mainWindow) {
+        mainWindow.minimize();
+    }
+});

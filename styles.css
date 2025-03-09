@@ -23,10 +23,16 @@
     --color-fondo: #eadff7;
     --color-fondo-claro: #f2ebfa;
     --color-titulo: #9373b9;
+
+    /*
+    new colors -> new theme
+    */
+    --color-fondo: #fbf9f3;
+    --color-fondo-oscuro: #f6f2e4;
 }
 
 body {
-    background-color: var(--color-fondo);
+    background-color: var(--color-fondo-oscuro);
 }
 
 .header {
@@ -46,6 +52,9 @@ body {
     -webkit-app-region: no-drag;
     background: none;
     border: none;
+    color: var(--color-titulo);
+    font-family: 'NombreCuerpoFuente';
+    font-size: 120%;
 }
 
 .close-icon {
@@ -63,12 +72,28 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 20px;
-    padding: 10px;
     border: 2px dashed var(--color-titulo);
     border-radius: 25px;
     background-color: var(--color-fondo-claro);
     font-family: "Madimi One";
     
+}
+
+.story-intro-container {
+    background-image: url('assets/images/StorylineIntro/1.png');
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease;
+    width: 100%;
+    height: 377px;
+    border-radius: 25px;
+    border: none;
+}
+
+.bottom-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .question-container {
@@ -79,13 +104,6 @@ body {
     transition: transform 0s linear;
 }
 
-.question-container.show {
-    animation: showSlow 0.5s linear forwards;
-}
-
-.question-container.hidden {
-    animation: hideSlow 0.5s linear forwards;
-}
 
 .score-container {
     color: var(--color-titulo);
@@ -144,13 +162,6 @@ body {
     transition: transform 0s ease;
 }
 
-.result-container.show {
-    animation: showSlow 1s linear forwards;
-}
-
-.result-container.hidden {
-    animation: hiddenSlow 1s linear forwards;
-}
 
 .text-result-container {
     color: var(--color-titulo);
@@ -161,27 +172,12 @@ body {
 .text-result-container p {
 }
 
-.text-result-container p.show {
-    animation: zoom 1s linear forwards;
-}
-
-.text-result-container p.hidden {
-    animation: hideSlow 1s linear forwards;
-}
 
 .result-image {
     width: 230px;
     height: 230px;
     margin-top: 20px;
     margin-bottom: 20px;
-}
-
-.result-image.show {
-    animation: zoomInOut 1s linear forwards;
-}
-
-.result-image.hidden {
-    animation: hideSlow 1s linear forwards;
 }
 
 .hidden-item {
