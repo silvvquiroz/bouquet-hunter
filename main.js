@@ -5,8 +5,8 @@ let mainWindow;
 
 app.whenReady().then(() => {
     mainWindow = new BrowserWindow({
-        width: 500,
-        height: 530,
+        width: 350,
+        height: 430,
         autoHideMenuBar: true,
         resizable: false,
         icon: path.join(__dirname, 'assets/images/logo.ico'),
