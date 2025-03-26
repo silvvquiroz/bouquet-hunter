@@ -6,11 +6,12 @@ let mainWindow;
 app.whenReady().then(() => {
     mainWindow = new BrowserWindow({
         width: 350,
-        height: 430,
+        height: 440,
         autoHideMenuBar: true,
         resizable: false,
         icon: path.join(__dirname, 'assets/images/logo.ico'),
         frame: false,
+        transparent: true,
         movable: true,
         webPreferences: {
             nodeIntegration: true,
