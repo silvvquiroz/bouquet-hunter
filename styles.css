@@ -43,7 +43,8 @@ body {
     height: 390px;
     background-color: black;
     border-radius: 15px;
-    background-color: rgba(234,166,237, 0.8);
+    /*background-color: rgba(234,166,237, 0.8);*/
+    background-color: rgba(131, 78, 168, 0.3);
     box-shadow: 5px 5px 20px rgba(0,0,0,0.5); /* Opcional, para destacar */
 }
 
@@ -118,10 +119,6 @@ body {
 .intro-container img {
     width: 200px;
 }
-
-
-
-
 
 
 /********************** GENERAL CONTAINER - GAME *******************/
